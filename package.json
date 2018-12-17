@@ -11,10 +11,13 @@
     "trailingComma": "all"
   },
   "devDependencies": {
+    "@types/ws": "^6.0.1",
     "ts-node": "^7.0.1",
     "typescript": "^3.2.2"
   },
   "dependencies": {
-    "@types/node": "^10.12.15"
+    "@types/node": "^10.12.15",
+    "isomorphic-ws": "^4.0.1",
+    "ws": "^6.1.2"
   }
 }
