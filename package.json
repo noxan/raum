@@ -4,7 +4,8 @@
   "main": "src/index.ts",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node ."
+    "start": "ts-node .",
+    "dev": "nodemon -x yarn start -e ts"
   },
   "prettier": {
     "singleQuote": true,
@@ -12,6 +13,7 @@
   },
   "devDependencies": {
     "@types/ws": "^6.0.1",
+    "nodemon": "^1.18.9",
     "ts-node": "^7.0.1",
     "typescript": "^3.2.2"
   },
