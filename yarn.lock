@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@types/node@^10.12.15":
+  version "10.12.15"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.15.tgz#20e85651b62fd86656e57c9c9bc771ab1570bc59"
+  integrity sha512-9kROxduaN98QghwwHmxXO2Xz3MaWf+I1sLVAA6KJDF5xix+IyXVhds0MAfdNwtcpSrzhaTsNB0/jnL86fgUhqA==
+
 arrify@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/arrify/-/arrify-1.0.1.tgz#898508da2226f380df904728456849c1501a4b0d"
