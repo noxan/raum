@@ -18,13 +18,19 @@ class Client {
     });
 
     ws.on('error', err => {
-      console.log('Error', err);
+      if ((err as any).code === 'ECONNREFUSED') {
+      } else {
+        throw err;
+      }
     });
 
     ws.on('close', (code: number, reason: string) => {
-      console.log('Close', code, reason);
+      if (code !== 1006) {
+        console.log('Close', code, reason);
+      }
 
       setTimeout(() => {
+        console.debug('Trying reconnect.');
         this.ws = this.setupSocket();
       }, 1000);
     });
