@@ -11,7 +11,7 @@ class Server {
   }
 
   onConnection(ws: WebSocket, req: IncomingMessage) {
-    console.log('onConnection', req.connection.remoteAddress);
+    console.log(`Client (${req.connection.remoteAddress})`);
     ws.on('message', data => this.onMessage(ws, data));
   }
 
