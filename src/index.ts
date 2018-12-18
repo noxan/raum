@@ -21,10 +21,15 @@ class Server {
     this.clients[identifier] = { ws };
 
     ws.on('message', data => this.onMessage(ws, data));
+    ws.on('close', (code, reason) => this.onClose(ws, code, reason));
   }
 
   onMessage(ws: WebSocket, data: WebSocket.Data) {
     console.log('onMessage', data);
+  }
+
+  onClose(ws: WebSocket, code: number, reason: string) {
+    console.log('onClose', code, reason);
   }
 }
 
