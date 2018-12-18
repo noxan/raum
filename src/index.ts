@@ -11,6 +11,11 @@ class Server {
 
   onConnection(ws: WebSocket) {
     console.log('onConnection', (ws as any)._socket.address());
+    ws.on('message', data => this.onMessage(ws, data));
+  }
+
+  onMessage(ws: WebSocket, data: WebSocket.Data) {
+    console.log('onMessage', data);
   }
 }
 
