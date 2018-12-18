@@ -14,22 +14,27 @@ class Server {
   }
 
   onConnection(ws: WebSocket, req: IncomingMessage) {
-    const name = `Client #${this.clientId++}`;
-    console.log(`${name} (${req.connection.remoteAddress})`);
+    const client = {
+      ws,
+      name: `Client #${this.clientId++}`,
+    };
+    console.log(client.name, 'connect', req.connection.remoteAddress);
 
-    const identifier = Symbol(name);
-    this.clients[identifier] = { ws };
+    const identifier = Symbol(client.name);
+    this.clients[identifier] = client;
 
-    ws.on('message', data => this.onMessage(ws, data));
-    ws.on('close', (code, reason) => this.onClose(ws, code, reason));
+    ws.on('message', data => this.onMessage(identifier, data));
+    ws.on('close', (code, reason) => this.onClose(identifier, code, reason));
   }
 
-  onMessage(ws: WebSocket, data: WebSocket.Data) {
-    console.log('onMessage', data);
+  onMessage(identifier: symbol, data: WebSocket.Data) {
+    const client = this.clients[identifier];
+    console.log(client.name, 'message', data);
   }
 
-  onClose(ws: WebSocket, code: number, reason: string) {
-    console.log('onClose', code, reason);
+  onClose(identifier: symbol, code: number, reason: string) {
+    const client = this.clients[identifier];
+    console.log(client.name, 'close', code, reason);
   }
 }
 
