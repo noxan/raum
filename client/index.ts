@@ -1,23 +1,35 @@
 import WebSocket from 'isomorphic-ws';
 
 class Client {
+  readonly address: string;
   private ws: WebSocket;
 
   constructor(address: string) {
-    this.ws = new WebSocket(address);
+    this.address = address;
+    this.ws = this.setupSocket();
+  }
 
-    this.ws.on('open', () => {
+  private setupSocket() {
+    const ws = new WebSocket(this.address);
+
+    ws.on('open', () => {
       console.log('Websocket connected.');
-      this.ws.send('hi :wave:');
+      ws.send('hi :wave:');
     });
 
-    this.ws.on('error', err => {
+    ws.on('error', err => {
       console.log('Error', err);
     });
 
-    this.ws.on('close', (code: number, reason: string) => {
+    ws.on('close', (code: number, reason: string) => {
       console.log('Close', code, reason);
+
+      setTimeout(() => {
+        this.ws = this.setupSocket();
+      }, 1000);
     });
+
+    return ws;
   }
 }
 
