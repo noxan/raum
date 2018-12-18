@@ -5,7 +5,9 @@
   "license": "MIT",
   "scripts": {
     "start": "ts-node .",
-    "dev": "nodemon -x yarn start -e ts"
+    "dev": "nodemon -x yarn start -e ts",
+    "client:start": "ts-node client/index.ts",
+    "client:dev": "nodemon -x yarn client:start -e ts"
   },
   "prettier": {
     "singleQuote": true,
