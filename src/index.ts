@@ -2,6 +2,9 @@ import WebSocket from 'isomorphic-ws';
 import { IncomingMessage } from 'http';
 
 class Server {
+  clientId = 0;
+  clients: any = {};
+
   constructor() {
     const wss = new WebSocket.Server({ port: 4200 });
 
@@ -11,7 +14,10 @@ class Server {
   }
 
   onConnection(ws: WebSocket, req: IncomingMessage) {
-    console.log(`Client (${req.connection.remoteAddress})`);
+    const name = `Client #${this.clientId++}`;
+    const identifier = Symbol(name);
+    this.clients[identifier] = { ws };
+    console.log(`${name} (${req.connection.remoteAddress})`);
     ws.on('message', data => this.onMessage(ws, data));
   }
 
