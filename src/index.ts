@@ -15,9 +15,11 @@ class Server {
 
   onConnection(ws: WebSocket, req: IncomingMessage) {
     const name = `Client #${this.clientId++}`;
+    console.log(`${name} (${req.connection.remoteAddress})`);
+
     const identifier = Symbol(name);
     this.clients[identifier] = { ws };
-    console.log(`${name} (${req.connection.remoteAddress})`);
+
     ws.on('message', data => this.onMessage(ws, data));
   }
 
