@@ -4,7 +4,7 @@ class Server {
   constructor() {
     const wss = new WebSocket.Server({ port: 4200 });
 
-    wss.on('connection', this.onConnection);
+    wss.on('connection', ws => this.onConnection(ws));
 
     console.log('Server started at ws://127.0.0.1:4200');
   }
