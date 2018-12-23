@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`store.insert() 1`] = `
+Array [
+  Object {
+    "94d11a8a-fb8f-43cc-b124-289410da2a54": Object {
+      "_id": "94d11a8a-fb8f-43cc-b124-289410da2a54",
+      "email": "richard@stromer.org",
+      "firstName": "Richard",
+    },
+  },
+]
+`;
