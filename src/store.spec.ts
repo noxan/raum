@@ -39,3 +39,11 @@ test('store.update()', () => {
 
   expect(Object.values(store.state)).toMatchSnapshot();
 });
+
+test('store.find()', () => {
+  const store = initStore();
+
+  const id = '94d11a8a-fb8f-43cc-b124-289410da2a54';
+  const user = store.find('user', obj => obj._id === id);
+  expect(user).toMatchSnapshot();
+});

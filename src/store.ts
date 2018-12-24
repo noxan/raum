@@ -20,4 +20,11 @@ export default class Store {
 
     this.state[model][id] = { _id: id, ...data };
   }
+
+  find(
+    model: string,
+    filter: (value: any, index: number, obj: {}[]) => boolean,
+  ) {
+    return Object.values(this.state[model]).find(filter);
+  }
 }
