@@ -1,6 +1,11 @@
 import WebSocket from 'isomorphic-ws';
 
-import { decodeMessage, Message, Action } from '../shared/protocol';
+import {
+  decodeMessage,
+  Message,
+  Action,
+  encodeMessage,
+} from '../shared/protocol';
 import Server from './server';
 import Store from './store';
 
@@ -15,6 +20,15 @@ class RaumServer extends Server {
 
   onStoreChange({ action, model, data }: Message) {
     console.log('store.change', action, model, data);
+
+    const pushAction = ({
+      [Action.INSERT]: Action.PUSH_INSERT,
+      [Action.UPDATE]: Action.PUSH_UPDATE,
+      [Action.DELETE]: Action.PUSH_DELETE,
+    } as any)[action];
+
+    const message = encodeMessage(pushAction, model, data);
+    this.broadcast(message);
   }
 
   onMessage(identifier: number, data: WebSocket.Data) {
