@@ -11,3 +11,27 @@ Array [
   },
 ]
 `;
+
+exports[`store.update() 1`] = `
+Object {
+  "user": Object {
+    "94d11a8a-fb8f-43cc-b124-289410da2a54": Object {
+      "_id": "94d11a8a-fb8f-43cc-b124-289410da2a54",
+      "email": "richard@stromer.org",
+      "firstName": "Richard",
+    },
+  },
+}
+`;
+
+exports[`store.update() 2`] = `
+Array [
+  Object {
+    "94d11a8a-fb8f-43cc-b124-289410da2a54": Object {
+      "_id": "94d11a8a-fb8f-43cc-b124-289410da2a54",
+      "email": "hello@example.com",
+      "firstName": "Richard",
+    },
+  },
+]
+`;
