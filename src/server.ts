@@ -35,6 +35,8 @@ export default class Server {
   onClose(clientId: number, code: number, reason: string) {
     const client = this.clients[clientId];
     console.log(client.name, 'close', code, reason);
+
+    delete this.clients[clientId];
   }
 
   broadcast(clientId: number, data: WebSocket.Data) {
