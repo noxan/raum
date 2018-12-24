@@ -19,8 +19,6 @@ class RaumServer extends Server {
   }
 
   onStoreChange({ action, model, data }: Message) {
-    console.log('store.change', action, model, data);
-
     const pushAction = ({
       [Action.INSERT]: Action.PUSH_INSERT,
       [Action.UPDATE]: Action.PUSH_UPDATE,
