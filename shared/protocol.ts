@@ -6,6 +6,12 @@ export enum Action {
   PUSH = 5,
 }
 
+export interface Message {
+  action: Action;
+  model: string;
+  data: object;
+}
+
 const matchRegex = /^([0-9]+)@([a-z]+)@(\{.*\})$/;
 
 export const encodeMessage = (
