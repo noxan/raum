@@ -5,7 +5,12 @@ import Server from './server';
 import Store from './store';
 
 class RaumServer extends Server {
-  store = new Store();
+  store: Store;
+
+  constructor() {
+    super();
+    this.store = new Store();
+  }
 
   onMessage(identifier: number, data: WebSocket.Data) {
     super.onMessage(identifier, data);
