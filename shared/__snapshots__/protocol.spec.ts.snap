@@ -1,3 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`encodeMessage 1`] = `"1"`;
+exports[`decodeMessage 1`] = `
+Object {
+  "action": 1,
+  "data": Object {},
+}
+`;
+
+exports[`encodeMessage 1`] = `"1@{}"`;
