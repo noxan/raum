@@ -6,10 +6,14 @@ export enum Action {
   PUSH = 5,
 }
 
-const matchRegex = /^([0-9]+)@(\{.*\})$/;
+const matchRegex = /^([0-9]+)@([a-z]+)@(\{.*\})$/;
 
-export const encodeMessage = (action: Action, data: object = {}) => {
-  return `${action}@${JSON.stringify(data)}`;
+export const encodeMessage = (
+  action: Action,
+  model: string,
+  data: object = {},
+) => {
+  return `${action}@${model}@${JSON.stringify(data)}`;
 };
 
 export const decodeMessage = (message: string) => {
@@ -19,7 +23,8 @@ export const decodeMessage = (message: string) => {
   }
 
   const action = parseInt(match[1], 10);
-  const data = JSON.parse(match[2]);
+  const model = match[2];
+  const data = JSON.parse(match[3]);
 
-  return { action, data };
+  return { action, model, data };
 };

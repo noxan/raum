@@ -4,7 +4,8 @@ exports[`decodeMessage 1`] = `
 Object {
   "action": 1,
   "data": Object {},
+  "model": "user",
 }
 `;
 
-exports[`encodeMessage 1`] = `"1@{}"`;
+exports[`encodeMessage 1`] = `"1@user@{}"`;
