@@ -1,6 +1,6 @@
 import WebSocket from 'isomorphic-ws';
 
-class Client {
+class Socket {
   readonly address: string;
   private ws: WebSocket;
 
@@ -39,4 +39,4 @@ class Client {
   }
 }
 
-new Client('ws://127.0.0.1:4200');
+new Socket('ws://127.0.0.1:4200');
