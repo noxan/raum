@@ -1,5 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`store.delete() 1`] = `
+Store {
+  "state": Object {
+    "user": Object {},
+  },
+}
+`;
+
 exports[`store.find() 1`] = `
 Object {
   "_id": "94d11a8a-fb8f-43cc-b124-289410da2a54",

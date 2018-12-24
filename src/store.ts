@@ -30,4 +30,8 @@ export default class Store {
   ) {
     return Object.values(this.state[model]).find(filter);
   }
+
+  delete(model: string, id: string) {
+    delete this.state[model][id];
+  }
 }

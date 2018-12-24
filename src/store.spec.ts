@@ -61,3 +61,10 @@ test('store.find()', () => {
   const user = store.find('user', obj => obj._id === id);
   expect(user).toMatchSnapshot();
 });
+
+test('store.delete()', () => {
+  const store = initStore();
+
+  store.delete('user', '94d11a8a-fb8f-43cc-b124-289410da2a54');
+  expect(store).toMatchSnapshot();
+});
