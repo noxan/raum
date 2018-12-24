@@ -38,7 +38,13 @@ export default class Socket {
   }
 
   protected send(data: WebSocket.Data) {
-    this.ws.send(data);
+    if (this.ws.readyState === WebSocket.OPEN) {
+      this.ws.send(data);
+    } else {
+      setTimeout(() => {
+        this.send(data);
+      }, 100);
+    }
   }
 
   protected onOpen() {}
