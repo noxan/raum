@@ -37,12 +37,11 @@ export default class Socket {
     return ws;
   }
 
-  onOpen() {
-    console.log('Websocket connected.');
-    this.ws.send('hi :wave:');
+  send(data: WebSocket.Data) {
+    this.ws.send(data);
   }
 
-  onMessage(data: WebSocket.Data) {
-    console.log('Message.', data);
-  }
+  onOpen() {}
+
+  onMessage(data: WebSocket.Data) {}
 }
