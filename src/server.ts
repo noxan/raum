@@ -39,9 +39,9 @@ export default class Server {
     delete this.clients[clientId];
   }
 
-  broadcast(clientId: number, data: WebSocket.Data) {
+  broadcast(data: WebSocket.Data, clientId?: number) {
     Object.keys(this.clients)
-      .filter(id => id.toString() !== clientId.toString())
+      .filter(id => id.toString() !== (clientId || '').toString())
       .forEach(key => this.clients[parseInt(key, 10)].ws.send(data));
   }
 }
