@@ -8,6 +8,9 @@ export default class Store {
       throw new Error(`${model} with ${id} does not exist.`);
     }
 
+    // make sure not to allow overrides of the id
+    (data as any)._id = id;
+
     this.state[model][id] = Object.assign({}, this.state[model][id], data);
   }
 

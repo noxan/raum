@@ -40,6 +40,20 @@ test('store.update()', () => {
   expect(Object.values(store.state)).toMatchSnapshot();
 });
 
+test('store.update() not override id', () => {
+  const store = initStore();
+
+  store.update('user', '94d11a8a-fb8f-43cc-b124-289410da2a54', {
+    _id: 'this-is-a-weird-id',
+  });
+
+  expect(
+    (Object.values(store.state)[0][
+      '94d11a8a-fb8f-43cc-b124-289410da2a54'
+    ] as any)._id,
+  ).toEqual('94d11a8a-fb8f-43cc-b124-289410da2a54');
+});
+
 test('store.find()', () => {
   const store = initStore();
 
