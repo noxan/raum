@@ -12,10 +12,9 @@ class Socket {
   private setupSocket() {
     const ws = new WebSocket(this.address);
 
-    ws.on('open', () => {
-      console.log('Websocket connected.');
-      ws.send('hi :wave:');
-    });
+    ws.on('open', () => this.onOpen());
+
+    ws.on('message', data => this.onMessage(data));
 
     ws.on('error', err => {
       if ((err as any).code === 'ECONNREFUSED') {
@@ -36,6 +35,15 @@ class Socket {
     });
 
     return ws;
+  }
+
+  onOpen() {
+    console.log('Websocket connected.');
+    this.ws.send('hi :wave:');
+  }
+
+  onMessage(data: WebSocket.Data) {
+    console.log('Message.', data);
   }
 }
 
