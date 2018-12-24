@@ -3,6 +3,7 @@ export enum Action {
   UPDATE = 2,
   FIND = 3,
   DELETE = 4,
+  PUSH = 5,
 }
 
 const matchRegex = /^([0-9]+)@(\{.*\})$/;
