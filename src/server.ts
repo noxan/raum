@@ -36,4 +36,10 @@ export default class Server {
     const client = this.clients[clientId];
     console.log(client.name, 'close', code, reason);
   }
+
+  broadcast(clientId: number, data: WebSocket.Data) {
+    Object.keys(this.clients)
+      .filter(id => id.toString() !== clientId.toString())
+      .forEach(key => this.clients[parseInt(key, 10)].ws.send(data));
+  }
 }
