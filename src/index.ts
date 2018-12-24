@@ -1,19 +1,7 @@
 import WebSocket from 'isomorphic-ws';
 
-import { decodeMessage, Action } from '../shared/protocol';
+import { decodeMessage, Message } from '../shared/protocol';
 import Server from './server';
-
-const switchMessage = ({
-  action,
-  model,
-  data,
-}: {
-  action: Action;
-  model: string;
-  data: Object;
-}) => {
-  console.log(action, model, data);
-};
 
 class RaumServer extends Server {
   onMessage(identifier: number, data: WebSocket.Data) {
@@ -21,10 +9,14 @@ class RaumServer extends Server {
 
     try {
       const message = decodeMessage(data as string);
-      switchMessage(message);
+      this.switchMessage(message);
     } catch (err) {
       console.error(err);
     }
+  }
+
+  switchMessage({ action, model, data }: Message) {
+    console.log(action, model, data);
   }
 }
 
