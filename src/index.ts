@@ -1,6 +1,6 @@
 import WebSocket from 'isomorphic-ws';
 
-import { decodeMessage, Message } from '../shared/protocol';
+import { decodeMessage, Message, Action } from '../shared/protocol';
 import Server from './server';
 
 class RaumServer extends Server {
@@ -16,7 +16,14 @@ class RaumServer extends Server {
   }
 
   switchMessage({ action, model, data }: Message) {
-    console.log(action, model, data);
+    switch (action) {
+      case Action.INSERT:
+        console.log(action, model, data);
+        break;
+      default:
+        console.error('Unknown action', action, model, data);
+        break;
+    }
   }
 }
 
