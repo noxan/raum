@@ -37,11 +37,11 @@ export default class Socket {
     return ws;
   }
 
-  send(data: WebSocket.Data) {
+  protected send(data: WebSocket.Data) {
     this.ws.send(data);
   }
 
-  onOpen() {}
+  protected onOpen() {}
 
-  onMessage(data: WebSocket.Data) {}
+  protected onMessage(data: WebSocket.Data) {}
 }
