@@ -10,6 +10,11 @@ class RaumServer extends Server {
   constructor() {
     super();
     this.store = new Store();
+    this.store.subscribe((message: Message) => this.onStoreChange(message));
+  }
+
+  onStoreChange({ action, model, data }: Message) {
+    console.log('store.change', action, model, data);
   }
 
   onMessage(identifier: number, data: WebSocket.Data) {
