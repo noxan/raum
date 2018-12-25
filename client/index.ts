@@ -29,7 +29,6 @@ class Client extends Socket {
 
   protected onOpen() {
     console.log('Websocket connected.');
-    this.send('hi :wave:');
   }
 
   protected onMessage(data: WebSocket.Data) {
