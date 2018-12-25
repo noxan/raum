@@ -44,7 +44,7 @@ class Client extends Socket {
     switch (action) {
       case Action.PUSH_FIND:
         const tmp: Array<object> =
-          (data as any).length > 1 ? (data as Array<object>) : [data];
+          data instanceof Array ? (data as Array<object>) : [data];
         tmp.forEach((entry: any) => {
           this.store[model][entry._id] = entry;
         });
