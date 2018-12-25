@@ -6,5 +6,5 @@ Experiments on a websocket protocol to remove APIs.
 
 ## Inspiration
 
-- Meteor and Distributed Data Protocol (DDP), https://github.com/meteor/meteor/tree/devel/packages/ddp
-- JSON:API, https://jsonapi.org
+- [Meteor](https://www.meteor.com) and [Distributed Data Protocol (DDP)](https://github.com/meteor/meteor/tree/devel/packages/ddp)
+- [JSON:API](https://jsonapi.org)
