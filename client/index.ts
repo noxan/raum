@@ -53,6 +53,10 @@ class Client extends Socket {
         );
         break;
       case Action.PUSH_INSERT:
+        this.store[model][(data as any)._id] = data;
+        this.listeners[model].forEach(listener =>
+          listener(ModelState.READY, Object.values(this.store[model])),
+        );
         break;
       default:
         console.error('Unknown action', action, model, data);
