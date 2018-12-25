@@ -1,12 +1,12 @@
 export enum Action {
-  INSERT = 1,
-  UPDATE = 2,
-  FIND = 3,
-  DELETE = 4,
-  PUSH_INSERT = 5,
-  PUSH_UPDATE = 6,
-  PUSH_FIND = 7,
-  PUSH_DELETE = 8,
+  INSERT = 'INSERT',
+  UPDATE = 'UPDATE',
+  FIND = 'FIND',
+  DELETE = 'DELETE',
+  PUSH_INSERT = 'PUSH_INSERT',
+  PUSH_UPDATE = 'PUSH_UPDATE',
+  PUSH_FIND = 'PUSH_FIND',
+  PUSH_DELETE = 'PUSH_DELETE',
 }
 
 export interface Message {
@@ -15,7 +15,7 @@ export interface Message {
   data: object;
 }
 
-const matchRegex = /^([0-9]+)@([a-z]+)@(\{.*\})$/;
+const matchRegex = /^([A-Z_]+)@([a-z]+)@(\{.*\})$/;
 
 export const encodeMessage = (
   action: Action,
@@ -31,7 +31,7 @@ export const decodeMessage = (message: string) => {
     throw new Error(`Could not parse message: ${message}`);
   }
 
-  const action = parseInt(match[1], 10);
+  const action = match[1];
   const model = match[2];
   const data = JSON.parse(match[3]);
 
