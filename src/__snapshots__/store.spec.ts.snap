@@ -2,6 +2,7 @@
 
 exports[`store.delete() 1`] = `
 Store {
+  "listeners": Array [],
   "state": Object {
     "user": Object {},
   },
