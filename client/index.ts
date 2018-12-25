@@ -1,7 +1,12 @@
 import WebSocket from 'isomorphic-ws';
 
 import Socket from './socket';
-import { encodeMessage, Action } from '../shared/protocol';
+import {
+  encodeMessage,
+  Action,
+  decodeMessage,
+  Message,
+} from '../shared/protocol';
 
 type ModelListener = (state: any, data: Array<any>) => void;
 
@@ -28,7 +33,23 @@ class Client extends Socket {
   }
 
   protected onMessage(data: WebSocket.Data) {
-    console.log('Message.', data);
+    try {
+      const message = decodeMessage(data as string);
+      this.switchMessage(message);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  protected switchMessage({ action, model, data }: Message) {
+    switch (action) {
+      case Action.PUSH_FIND:
+        console.log(action, model, data);
+        break;
+      default:
+        console.error('Unknown action', action, model, data);
+        break;
+    }
   }
 
   insert(model: string, data: object) {
