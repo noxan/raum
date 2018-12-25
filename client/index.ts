@@ -71,13 +71,10 @@ class Client extends Socket {
 
   subscribe(model: string, listener: ModelListener) {
     this.addListener(model, listener);
-    if (this.store[model]) {
-      listener(ModelState.READY, Object.values(this.store[model]));
-    } else {
+    if (!this.store[model]) {
       this.store[model] = {};
       const message = encodeMessage(Action.FIND, model);
       this.send(message);
-      listener(ModelState.LOADING, Object.values(this.store[model]));
     }
   }
 }
