@@ -44,4 +44,8 @@ export default class Server {
       .filter(id => id.toString() !== (clientId || '').toString())
       .forEach(key => this.clients[parseInt(key, 10)].ws.send(data));
   }
+
+  send(data: WebSocket.Data, clientId: number) {
+    this.clients[clientId].ws.send(data);
+  }
 }

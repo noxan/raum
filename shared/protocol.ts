@@ -5,7 +5,8 @@ export enum Action {
   DELETE = 4,
   PUSH_INSERT = 5,
   PUSH_UPDATE = 6,
-  PUSH_DELETE = 7,
+  PUSH_FIND = 7,
+  PUSH_DELETE = 8,
 }
 
 export interface Message {

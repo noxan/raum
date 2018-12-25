@@ -34,17 +34,23 @@ class RaumServer extends Server {
 
     try {
       const message = decodeMessage(data as string);
-      this.switchMessage(message);
+      this.switchMessage(identifier, message);
     } catch (err) {
       console.error(err);
     }
   }
 
-  switchMessage({ action, model, data }: Message) {
+  switchMessage(identifier: number, { action, model, data }: Message) {
     switch (action) {
       case Action.INSERT:
         this.store.insert(model, data);
         console.log(action, model, data);
+        break;
+      case Action.FIND:
+        const modelData = this.store.find(model, () => true);
+        console.log(action, model, data);
+        const message = encodeMessage(Action.PUSH_FIND, model, modelData);
+        this.send(message, identifier);
         break;
       default:
         console.error('Unknown action', action, model, data);
