@@ -31,7 +31,7 @@ export const decodeMessage = (message: string) => {
     throw new Error(`Could not parse message: ${message}`);
   }
 
-  const action = match[1];
+  const action: Action = Action[match[1] as any] as Action;
   const model = match[2];
   const data = JSON.parse(match[3]);
 
