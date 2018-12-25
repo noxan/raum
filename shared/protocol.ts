@@ -15,7 +15,7 @@ export interface Message {
   data: object;
 }
 
-const matchRegex = /^([A-Z_]+)@([a-z]+)@(\{.*\})$/;
+const matchRegex = /^([A-Z_]+)@([a-z]+)@([\[\{].*[\]\}])$/;
 
 export const encodeMessage = (
   action: Action,
