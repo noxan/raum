@@ -17,7 +17,7 @@ enum ModelState {
 
 class Client extends Socket {
   private listeners: { [key: string]: Array<ModelListener> } = {};
-  private store: { [key: string]: {} } = {};
+  private store: { [key: string]: { [key: string]: {} } } = {};
 
   private addListener(model: string, listener: ModelListener) {
     if (this.listeners[model]) {
@@ -43,7 +43,16 @@ class Client extends Socket {
   protected switchMessage({ action, model, data }: Message) {
     switch (action) {
       case Action.PUSH_FIND:
-        console.log(action, model, data);
+        const tmp: Array<object> =
+          (data as any).length > 1 ? (data as Array<object>) : [data];
+        tmp.forEach((entry: any) => {
+          this.store[model][entry._id] = entry;
+        });
+        this.listeners[model].forEach(listener =>
+          listener(ModelState.READY, Object.values(this.store[model])),
+        );
+        break;
+      case Action.PUSH_INSERT:
         break;
       default:
         console.error('Unknown action', action, model, data);
