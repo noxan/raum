@@ -10,11 +10,13 @@ Store {
 `;
 
 exports[`store.find() 1`] = `
-Object {
-  "_id": "94d11a8a-fb8f-43cc-b124-289410da2a54",
-  "email": "richard@stromer.org",
-  "firstName": "Richard",
-}
+Array [
+  Object {
+    "_id": "94d11a8a-fb8f-43cc-b124-289410da2a54",
+    "email": "richard@stromer.org",
+    "firstName": "Richard",
+  },
+]
 `;
 
 exports[`store.insert() 1`] = `

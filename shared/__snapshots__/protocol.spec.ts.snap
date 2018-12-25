@@ -2,10 +2,10 @@
 
 exports[`decodeMessage 1`] = `
 Object {
-  "action": 1,
+  "action": "INSERT",
   "data": Object {},
   "model": "user",
 }
 `;
 
-exports[`encodeMessage 1`] = `"1@user@{}"`;
+exports[`encodeMessage 1`] = `"INSERT@user@{}"`;

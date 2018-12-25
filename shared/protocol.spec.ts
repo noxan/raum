@@ -6,6 +6,6 @@ test('encodeMessage', () => {
 });
 
 test('decodeMessage', () => {
-  const message = decodeMessage('1@user@{}');
+  const message = decodeMessage('INSERT@user@{}');
   expect(message).toMatchSnapshot();
 });
