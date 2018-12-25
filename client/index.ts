@@ -23,7 +23,7 @@ class Client extends Socket {
     if (this.listeners[model]) {
       this.listeners[model].push(listener);
     } else {
-      this.listeners[model] = [];
+      this.listeners[model] = [listener];
     }
   }
 
