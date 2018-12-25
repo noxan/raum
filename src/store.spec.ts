@@ -57,8 +57,7 @@ test('store.update() not override id', () => {
 test('store.find()', () => {
   const store = initStore();
 
-  const id = '94d11a8a-fb8f-43cc-b124-289410da2a54';
-  const user = store.find('user', obj => obj._id === id);
+  const user = store.find('user');
   expect(user).toMatchSnapshot();
 });
 
