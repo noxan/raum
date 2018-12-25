@@ -47,8 +47,8 @@ class RaumServer extends Server {
         console.log(action, model, data);
         break;
       case Action.FIND:
-        const modelData = this.store.find(model, () => true);
-        console.log(action, model, data);
+        const modelData = this.store.find(model);
+        console.log(action, model, data, modelData);
         const message = encodeMessage(Action.PUSH_FIND, model, modelData);
         this.send(message, identifier);
         break;

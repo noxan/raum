@@ -28,11 +28,8 @@ export default class Store {
     this.notify(Action.INSERT, model, this.state[model][id]);
   }
 
-  find(
-    model: string,
-    filter: (value: any, index: number, obj: {}[]) => boolean,
-  ) {
-    return Object.values(this.state[model]).find(filter);
+  find(model: string) {
+    return Object.values(this.state[model]);
   }
 
   delete(model: string, id: string) {
